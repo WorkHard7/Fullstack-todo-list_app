@@ -1,0 +1,48 @@
+.container {
+  position: relative;
+  width: 500px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #bab7b7;
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #7123e8;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #5e1ad6;
+}
+
+.no-todos {
+  color: #6a16e8;
+  font-size: 13px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.archive-todos-container {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.archive-todos-container.show {
+  opacity: 1;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

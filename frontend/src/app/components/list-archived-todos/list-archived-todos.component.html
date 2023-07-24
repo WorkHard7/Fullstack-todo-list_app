@@ -1,0 +1,11 @@
+<ul *ngFor="let todo of archivedTodos">
+  <li style="display: flex">{{todo.title}}
+    <app-restore-archived-todo-btn
+      class="restore-btn"
+      [todo]="todo.title"
+      (restoredTodo)="restoreTodo(todo)"
+    ></app-restore-archived-todo-btn>
+    <app-delete-archived-todo-btn
+      (deletedTodo)="deleteArchivedTodo(todo)"
+    ></app-delete-archived-todo-btn>
+</ul>

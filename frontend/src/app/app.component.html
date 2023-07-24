@@ -1,0 +1,30 @@
+<div *ngIf="isSignupPage()">
+  <app-sign-up-form></app-sign-up-form>
+</div>
+
+<div *ngIf="isLoginPage()">
+  <app-log-in-form></app-log-in-form>
+</div>
+
+<div *ngIf="isHomePage()">
+  <app-logout-btn></app-logout-btn>
+  <app-header></app-header>
+
+  <div class="main-container">
+    <app-add-todo></app-add-todo>
+
+    <app-search-todo-btn
+      (searchClick)="searchClick($event)"
+    ></app-search-todo-btn>
+
+    <app-list-todos
+      [searchValue]="searchValue"
+    ></app-list-todos>
+  </div>
+
+  <app-archived-todos-btn></app-archived-todos-btn>
+</div>
+
+<div *ngIf="routeNotFound()">
+  <app-route-not-found></app-route-not-found>
+</div>

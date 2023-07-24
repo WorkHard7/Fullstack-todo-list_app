@@ -1,0 +1,20 @@
+<div style="display: flex">
+  <div class="search-input">
+    <input
+      (input)="onSearchClick(input)"
+      [(ngModel)]="inputValue"
+      type="text" #input class="input" placeholder="Looking for a specific todo?">
+  </div>
+  <div class="search-btn">
+    <button
+      (click)="onSearchClick(input)"
+      kendoButton
+      [themeColor]="'info'"
+      [fillMode]="'flat'"
+      [togglable]="false"
+      [svgIcon]="searchIcon"
+      [disabled] = true
+    >Search
+    </button>
+  </div>
+</div>

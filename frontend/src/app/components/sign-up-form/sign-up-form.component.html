@@ -1,0 +1,49 @@
+<form [formGroup]="signupForm" (ngSubmit)="submitSignupForm()" class="signup-form">
+  <h2 class="form-title">Sign Up</h2>
+  <div class="form-group">
+    <label for="name" class="form-label">Name</label>
+    <input type="text" id="name" formControlName="name" class="form-input" placeholder="Enter your name">
+    <div *ngIf="signupForm.get('name')?.invalid && signupForm.get('name')?.touched" class="form-error">
+      Name must be at least 3 characters long.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" id="email" formControlName="email" class="form-input" placeholder="Enter your email">
+    <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched" class="form-error">
+      Please enter a valid email address.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password" class="form-label">Password</label>
+    <input type="password" id="password" formControlName="password" class="form-input"
+           placeholder="Enter your password">
+    <div *ngIf="passwordIsInvalid(signupForm)" class="form-error">
+      Minimum of 6 characters required. Must contain at least one uppercase letter,
+      one lowercase letter, one number and one special character.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password_confirmation" class="form-label">Repeat Password</label>
+    <input type="password" id="password_confirmation" formControlName="password_confirmation" class="form-input"
+           placeholder="Repeat your password">
+    <div *ngIf="passwordDoesNotMatch(signupForm)"
+         class="form-error">
+      Passwords do not match.
+    </div>
+  </div>
+  <button type="submit" [disabled]="signupForm.invalid" class="form-button">Sign Up</button>
+
+  <div *ngIf="loading" class="spinner-container">
+    <div class="spinner"></div>
+  </div>
+
+  <div style="color: red" *ngIf="errorMessage && (!signupForm.get('email')?.touched)">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <div class="login-message">
+    <p>Have already an account?</p>
+    <a routerLink="/login" class="login-link">Log In</a>
+  </div>
+</form>

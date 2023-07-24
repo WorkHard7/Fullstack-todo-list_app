@@ -1,0 +1,27 @@
+<div class="todo">
+  <div style="flex: 3">
+    <input
+      (keyup.enter)="addToDo(input)"
+      #input
+      id="input"
+      class="input"
+      type="text"
+      autofocus
+      placeholder="What needs to be done?"
+      [(ngModel)]="inputValue"
+    >
+  </div>
+  <div style="flex: 1; text-align: end">
+    <button
+      (click)="addToDo(input)"
+      kendoButton
+      [svgIcon]="plusIcon"
+      [togglable]="true"
+      [themeColor]="'success'"
+      [disabled]="inputValue.trim() === ''"
+      type="submit"
+    >
+      Add
+    </button>
+  </div>
+</div>
