@@ -13,7 +13,7 @@
       <fa-icon animation="beat-fade" [icon]="faAngleUp"></fa-icon>
     </ng-template>
   </button>
-  <span *ngIf="(archivedTodos$ | async)?.length === 0" class="no-todos">
+  <span *ngIf="archivedTodos?.length === 0" class="no-todos">
   No archived todos so far...
 </span>
   <div *ngIf="showArchivedTodos" [class.archive-todos-container]="true" [class.show]="showArchivedTodos">

@@ -1,0 +1,143 @@
+<div class="profile">
+  <div class="info">
+    <h2>Name: {{ name }}</h2>
+    <h2>Email: {{ email }}</h2>
+  </div>
+
+  <div class="three-btns">
+    <button
+      kendoButton
+      #btn
+      themeColor="secondary"
+      type="button"
+      class="edit-button"
+      (click)="changeName()">
+      Change Name
+      <fa-icon *ngIf="!isNameFormOpen; else elseBlock"
+               animation="beat-fade"
+               [icon]="faAngleDown">
+      </fa-icon>
+      <ng-template #elseBlock>
+        <fa-icon animation="beat-fade" [icon]="faAngleUp"></fa-icon>
+      </ng-template>
+    </button>
+
+    <button
+      kendoButton
+      #btn
+      themeColor="secondary"
+      type="button"
+      class="edit-button"
+      (click)="changeEmail()">
+      Change Email
+      <fa-icon *ngIf="!isEmailFormOpen; else elseBlock"
+               animation="beat-fade"
+               [icon]="faAngleDown">
+      </fa-icon>
+      <ng-template #elseBlock>
+        <fa-icon animation="beat-fade" [icon]="faAngleUp"></fa-icon>
+      </ng-template>
+    </button>
+
+    <button
+      kendoButton
+      #btn
+      themeColor="secondary"
+      type="button"
+      class="edit-button"
+      (click)="changePassword()">
+      Change Password
+      <fa-icon *ngIf="!isPasswordFormOpen; else elseBlock"
+               animation="beat-fade"
+               [icon]="faAngleDown">
+      </fa-icon>
+      <ng-template #elseBlock>
+        <fa-icon animation="beat-fade" [icon]="faAngleUp"></fa-icon>
+      </ng-template>
+    </button>
+  </div>
+</div>
+
+<div [@slideInOut]="isNameFormOpen ? 'open' : 'closed'" class="profile-container">
+  <h2 class="profile-title">Edit Name</h2>
+  <form [formGroup]="nameForm" (ngSubmit)="submitNameForm()" class="profile-form">
+    <div class="form-group">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" id="name"
+             formControlName="name" class="form-input" placeholder="Enter your new name">
+      <div *ngIf="nameForm.get('name')?.invalid && nameForm.get('name')?.touched" class="form-error">
+        Please enter a valid name (minimum 3 characters).
+      </div>
+    </div>
+    <button type="submit" [disabled]="nameForm.invalid" class="form-button">Update Name</button>
+  </form>
+
+  <p class="success" *ngIf="successMessage !== null">
+    {{ successMessage }}
+  </p>
+
+  <p style="color: red" *ngIf="errorMessage !== null">
+    {{ errorMessage }}
+  </p>
+</div>
+
+<div [@slideInOut]="isEmailFormOpen ? 'open' : 'closed'" class="profile-container">
+  <h2 class="profile-title">Edit Email</h2>
+  <form [formGroup]="emailForm" (ngSubmit)="submitEmailForm()" class="profile-form">
+    <div class="form-group">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" id="email"
+             formControlName="email" class="form-input" placeholder="Enter your new email">
+      <div *ngIf="emailForm.get('email')?.invalid && emailForm.get('email')?.touched" class="form-error">
+        Please enter a valid email address.
+      </div>
+    </div>
+    <button type="submit" [disabled]="emailForm.invalid" class="form-button">Update Email</button>
+  </form>
+
+  <p class="success" *ngIf="successMessage !== null">
+    {{ successMessage }}
+  </p>
+
+  <p style="color: red" *ngIf="errorMessage !== null">
+    {{ errorMessage }}
+  </p>
+</div>
+
+<div [@slideInOut]="isPasswordFormOpen ? 'open' : 'closed'" class="profile-container">
+  <h2 class="profile-title">Change Password</h2>
+  <form [formGroup]="passwordForm" (ngSubmit)="submitPasswordForm()" class="profile-form">
+    <div class="form-group">
+      <label for="oldPassword" class="form-label">Old Password</label>
+      <input type="password" id="oldPassword"
+             formControlName="oldPassword" class="form-input" placeholder="Enter your old password">
+    </div>
+    <div class="form-group">
+      <label for="newPassword" class="form-label">New Password</label>
+      <input type="password" id="newPassword" formControlName="newPassword" class="form-input"
+             placeholder="Enter your new password">
+      <div *ngIf="passwordIsInvalid(passwordForm)" class="form-error">
+        Minimum of 6 characters required. Must contain at least one uppercase letter,
+        one lowercase letter, one number, and one special character.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="confirmPassword" class="form-label">Repeat Password</label>
+      <input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-input"
+             placeholder="Repeat your password">
+      <div *ngIf="passwordDoesNotMatch(passwordForm)"
+           class="form-error">
+        Passwords do not match.
+      </div>
+    </div>
+    <button type="submit" [disabled]="passwordForm.invalid" class="form-button">Update Password</button>
+  </form>
+
+  <p class="success" *ngIf="successMessage !== null">
+    {{ successMessage }}
+  </p>
+
+  <p style="color: red" *ngIf="errorMessage !== null">
+    {{ errorMessage }}
+  </p>
+</div>

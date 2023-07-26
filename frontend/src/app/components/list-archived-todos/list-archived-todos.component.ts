@@ -19,20 +19,17 @@ export class ListArchivedTodosComponent implements OnInit {
 
   ngOnInit() {
     this.toDoService.archivedTodos$.subscribe({
-      next: (todos: any) => {
-        console.log('archived to do from service: ', todos);
+      next: (todos: Todo[]) => {
         this.archivedTodos = todos;
       }
     })
   }
 
   restoreTodo(restoredTodo: Todo): void {
-    console.log('actual todo?', restoredTodo);
     this.toDoService.restoreTodo(restoredTodo);
   }
 
   deleteArchivedTodo(todo: Todo): void {
-    console.log('actual archived todo?', todo);
     this.toDoService.deleteArchivedTodo(todo);
   }
 }

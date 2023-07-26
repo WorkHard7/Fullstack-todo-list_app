@@ -25,7 +25,7 @@ export class LogInFormComponent implements OnInit {
 
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required]]
     });
   }
 
@@ -39,12 +39,6 @@ export class LogInFormComponent implements OnInit {
     const password = this.loginForm.get('password')?.value;
 
     this.authUser.login(email, password);
-
-    this.saveUserToLocalStorage(email);
-  }
-
-  private saveUserToLocalStorage(email: string) {
-    localStorage.setItem('username', JSON.stringify(email));
   }
 
   private getErrorMessageFromLocalStorage() {

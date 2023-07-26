@@ -22,6 +22,7 @@ export class SignUpFormComponent implements OnInit {
     private authService: UsersAuthService,
     private router: Router
   ) {
+    this.getErrorMessageFromLocalStorage();
   }
 
   createForm(): void {
@@ -73,5 +74,10 @@ export class SignUpFormComponent implements OnInit {
   passwordIsInvalid(myForm: FormGroup): boolean {
     const passwordControl = myForm.get('password');
     return passwordControl ? (passwordControl.invalid && passwordControl?.dirty && passwordControl?.touched) : false;
+  }
+
+  private getErrorMessageFromLocalStorage() {
+    this.errorMessage = localStorage.getItem('errorMessage')!;
+    localStorage.removeItem('errorMessage');
   }
 }

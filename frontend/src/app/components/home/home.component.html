@@ -1,0 +1,15 @@
+<app-header></app-header>
+
+<div class="main-container">
+  <app-add-todo></app-add-todo>
+
+  <app-search-todo-btn
+    (searchClick)="searchClick($event)"
+  ></app-search-todo-btn>
+
+  <app-list-todos
+    [searchValue]="searchValue"
+  ></app-list-todos>
+</div>
+
+<app-archived-todos-btn></app-archived-todos-btn>

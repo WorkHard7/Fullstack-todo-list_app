@@ -187,7 +187,6 @@ export class ToDoService {
 
           case 'deleteTodo':
 
-            console.log('todo', todo);
             const todos = this.toDoList$.getValue();
             const todoIndex = todos.findIndex((item) => item.uuid === todo.todo.uuid);
 

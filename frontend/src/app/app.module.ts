@@ -29,6 +29,10 @@ import {RouteNotFoundComponent} from './components/route-not-found/route-not-fou
 import {LogoutBtnComponent} from './components/logout-btn/logout-btn.component';
 import {AuthGuard} from "./guards/auth.guard";
 import {SignUpFormComponent} from './components/sign-up-form/sign-up-form.component';
+import {UserProfileComponent} from './components/user-profile/user-profile.component';
+import {UserProfileEditComponent} from './components/user-profile-edit/user-profile-edit.component';
+import {HomeComponent} from './components/home/home.component';
+import {NavbarComponent} from './components/navbar/navbar.component';
 
 
 @NgModule({
@@ -49,6 +53,10 @@ import {SignUpFormComponent} from './components/sign-up-form/sign-up-form.compon
     RouteNotFoundComponent,
     LogoutBtnComponent,
     SignUpFormComponent,
+    UserProfileComponent,
+    UserProfileEditComponent,
+    HomeComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

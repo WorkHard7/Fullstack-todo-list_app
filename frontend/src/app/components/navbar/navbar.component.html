@@ -1,0 +1,13 @@
+<nav>
+  <app-logout-btn *ngIf="!isSignupOrLoginPage()"></app-logout-btn>
+
+  <button
+    kendoButton
+    *ngIf="!isSignupOrLoginPageOrTodos()"
+    routerLink="/todos"
+    [themeColor]="'tertiary'"
+    [fillMode]="'outline'"
+    [svgIcon]="listIcon"
+  >todos
+  </button>
+</nav>

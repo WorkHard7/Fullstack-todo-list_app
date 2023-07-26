@@ -13,13 +13,22 @@ export class ArchivedTodosBtnComponent {
   showArchivedTodos: boolean = false;
   faAngleDown = faAngleDown;
   faAngleUp = faAngleUp;
-  archivedTodos$!: Observable<Todo[]>;
+  archivedTodos: Todo[] = [];
 
   constructor(private toDoService: ToDoService) {
-    this.archivedTodos$ = toDoService.getArchivedTodos()
-      .pipe(
-        catchError(err => of('An error occurred while fetching archived todos', err))
-      )
+    toDoService.getArchivedTodos()
+      .subscribe({
+        next: (todos: Todo[]) => {
+          this.archivedTodos = todos;
+        },
+        error: (err) => console.error('An error occurred while fetching archived todos', err)
+      })
+
+    this.toDoService.archivedTodos$.subscribe({
+      next: (todos: Todo[]) => {
+        this.archivedTodos = todos;
+      }
+    })
   }
 
   toggleArchivedTodo(): void {

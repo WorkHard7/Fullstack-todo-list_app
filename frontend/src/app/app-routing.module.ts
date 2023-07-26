@@ -7,18 +7,37 @@ import {AuthGuard} from "./guards/auth.guard";
 import {LoginAuthGuard} from "./guards/login-auth.guard";
 import {SignUpFormComponent} from "./components/sign-up-form/sign-up-form.component";
 import {SignupAuthGuard} from "./guards/signup-auth.guard";
+import {UserProfileComponent} from "./components/user-profile/user-profile.component";
+import {UserProfileGuard} from "./guards/user-profile.guard";
+import {UserProfileEditComponent} from "./components/user-profile-edit/user-profile-edit.component";
+import {UserProfileResolver} from "./resolvers/user-profile.resolver";
+import {HomeComponent} from "./components/home/home.component";
 
 const routes: Routes = [
   {
     path: 'todos',
     pathMatch: 'full',
-    component: AppComponent,
+    component: HomeComponent,
     canActivate: [AuthGuard]
   },
   {
     path: '',
     redirectTo: 'todos',
     pathMatch: 'full',
+  },
+  {
+    path: 'profile',
+    component: UserProfileComponent,
+    resolve: {
+      user: UserProfileResolver
+    },
+    canActivate: [UserProfileGuard],
+  },
+  {
+    path: 'profile/edit',
+    component: UserProfileEditComponent,
+    pathMatch: 'full',
+    canActivate: [UserProfileGuard]
   },
   {
     path: 'signup',

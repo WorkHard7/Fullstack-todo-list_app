@@ -18,22 +18,34 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/users/signup', [AuthController::class, 'signup'])->name('signup');
-
 Route::post('/users/login', [AuthController::class, 'login'])->name('login');
-Route::post('/users/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
-Route::group(['prefix' => '/todos'], function () {
-    Route::get('/', [TodoController::class, 'index']);
-    Route::post('/create', [TodoController::class, 'create']);
-    Route::put('/update/{todo}', [TodoController::class, 'update']);
+Route::group(['middleware' => ['jwt.auth']], function () {
+    Route::get('/users/profile', [AuthController::class, 'getUserProfile'])->name('getUserProfile');
 
-    Route::put('/update/status/{todo}', [TodoController::class, 'updateStatus']);
-    Route::delete('/delete/{todo}', [TodoController::class, 'destroy']);
+    Route::group(['prefix' => '/users/profile/edit'], function () {
+        Route::patch('name', [AuthController::class, 'changeName'])->name('changeName');
+        Route::patch('email', [AuthController::class, 'changeEmail'])->name('changeEmail');
+        Route::patch('password', [AuthController::class, 'changePassword'])->name('changePassword');
+    });
+});
 
-    Route::group(['prefix' => 'archived'], function () {
-        Route::get('/', [ArchivedTodoController::class, 'index']);
-        Route::post('/restore/{todo}', [ArchivedTodoController::class, 'restore']);
-        Route::delete('/delete/{todo}', [ArchivedTodoController::class, 'destroy']);
+Route::group(['middleware' => ['jwt.auth']], function () {
+    Route::post('/users/logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::group(['prefix' => '/todos'], function () {
+        Route::get('/', [TodoController::class, 'index']);
+        Route::post('/create', [TodoController::class, 'create']);
+        Route::put('/update/{todo}', [TodoController::class, 'update']);
+
+        Route::put('/update/status/{todo}', [TodoController::class, 'updateStatus']);
+        Route::delete('/delete/{todo}', [TodoController::class, 'destroy']);
+
+        Route::group(['prefix' => 'archived'], function () {
+            Route::get('/', [ArchivedTodoController::class, 'index']);
+            Route::post('/restore/{todo}', [ArchivedTodoController::class, 'restore']);
+            Route::delete('/delete/{todo}', [ArchivedTodoController::class, 'destroy']);
+        });
     });
 });
 
