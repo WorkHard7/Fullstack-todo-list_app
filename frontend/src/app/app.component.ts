@@ -11,7 +11,7 @@ export class AppComponent {
   constructor(public router: Router) {
   }
 
-  isSignupOrLoginPage(): boolean {
-    return this.router.url === '/signup' || this.router.url === '/login';
+  isSignupLoginOrWelcomePage(): boolean {
+    return this.router.url === '/signup' || this.router.url === '/login' || this.router.url === '/';
   }
 }

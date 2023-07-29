@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LogInFormComponent} from "./components/log-in-form/log-in-form.component";
-import {AppComponent} from "./app.component";
 import {RouteNotFoundComponent} from "./components/route-not-found/route-not-found.component";
 import {AuthGuard} from "./guards/auth.guard";
 import {LoginAuthGuard} from "./guards/login-auth.guard";
@@ -12,6 +11,8 @@ import {UserProfileGuard} from "./guards/user-profile.guard";
 import {UserProfileEditComponent} from "./components/user-profile-edit/user-profile-edit.component";
 import {UserProfileResolver} from "./resolvers/user-profile.resolver";
 import {HomeComponent} from "./components/home/home.component";
+import {WelcomePageComponent} from "./components/welcome-page/welcome-page.component";
+import {WelcomePageGuard} from "./guards/welcome-page.guard";
 
 const routes: Routes = [
   {
@@ -22,8 +23,9 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'todos',
+    component: WelcomePageComponent,
     pathMatch: 'full',
+    canActivate: [WelcomePageGuard]
   },
   {
     path: 'profile',

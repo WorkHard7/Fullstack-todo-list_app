@@ -89,7 +89,7 @@ export class UsersAuthService {
         this.cookieService.delete('token');
         this.userService.setUsername('');
 
-        this.router.navigate(['/login']);
+        this.router.navigate(['/']);
       }
     })
   }

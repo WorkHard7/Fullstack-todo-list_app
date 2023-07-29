@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, signal} from '@angular/core';
 import {BehaviorSubject, catchError, Observable, of, tap} from "rxjs";
 import {Todo} from "../interfaces/todo";
 import Swal from "sweetalert2";
@@ -12,6 +12,7 @@ import {CookieService} from "ngx-cookie-service";
   providedIn: 'root'
 })
 export class ToDoService {
+  public todoListSig = signal<Todo[]>([]);
   public toDoList$: BehaviorSubject<Todo[]> = new BehaviorSubject<Todo[]>([]);
   public archivedTodos$: BehaviorSubject<Todo[]> = new BehaviorSubject<Todo[]>([])
 

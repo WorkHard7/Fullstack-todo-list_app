@@ -33,6 +33,7 @@ import {UserProfileComponent} from './components/user-profile/user-profile.compo
 import {UserProfileEditComponent} from './components/user-profile-edit/user-profile-edit.component';
 import {HomeComponent} from './components/home/home.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
+import {WelcomePageComponent} from './components/welcome-page/welcome-page.component';
 
 
 @NgModule({
@@ -57,6 +58,7 @@ import {NavbarComponent} from './components/navbar/navbar.component';
     UserProfileEditComponent,
     HomeComponent,
     NavbarComponent,
+    WelcomePageComponent,
   ],
   imports: [
     BrowserModule,

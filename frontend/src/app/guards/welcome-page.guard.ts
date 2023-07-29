@@ -5,19 +5,19 @@ import {CookieService} from "ngx-cookie-service";
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard {
+export class WelcomePageGuard {
 
-  constructor(private cookieService: CookieService, private router: Router) {
+  constructor(private cookiesService: CookieService, private router: Router) {
   }
 
   canActivate(): boolean {
+    const token = this.cookiesService.get('token');
 
-    const token = this.cookieService.get('token');
     if (token) {
-      return true;
-    } else {
-      this.router.navigate(['/login']);
+      this.router.navigate(['todos']);
       return false;
+    } else {
+      return true;
     }
   }
 }
