@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ToDoService} from "../../services/to-do.service";
 import {editToolsIcon} from "@progress/kendo-svg-icons";
 import {Todo} from "../../interfaces/todo";
+import {Router} from "@angular/router";
+import {UsersAuthService} from "../../services/users-auth.service";
 
 @Component({
   selector: 'app-list-todos',
@@ -15,14 +17,17 @@ export class ListTodosComponent implements OnInit {
   toDoList: Todo[] = [];
   protected readonly editIcon = editToolsIcon;
 
-  constructor(private toDoService: ToDoService) {
+  constructor(private toDoService: ToDoService, private authService: UsersAuthService) {
   }
 
   ngOnInit(): void {
     this.loading = true;
 
     this.toDoService.getTodos().subscribe({
-      error: (err) => console.error('An error occurred while fetching todo list', err),
+      error: (err) => {
+        console.error('An error occurred while fetching todo list', err);
+        this.authService.logout();
+      },
       complete: () => this.loading = false
     })
 

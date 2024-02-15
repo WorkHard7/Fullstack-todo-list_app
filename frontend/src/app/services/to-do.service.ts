@@ -33,7 +33,7 @@ export class ToDoService {
           this.toDoList$.next(todos);
         }),
         catchError((err) => {
-          console.error('An error occurred while fetching todo list', err)
+          console.error('An error occurred while fetching todo list', err);
           return of([]);
         })
       )

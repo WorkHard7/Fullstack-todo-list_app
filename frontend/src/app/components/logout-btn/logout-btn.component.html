@@ -1,20 +1,10 @@
-<div class="logout">
-  <div class="username">
-    <span
-      kendoButton
-      [svgIcon]="userIcon"
-      [themeColor]="'tertiary'"
-      [fillMode]="'outline'"
-      routerLink="/profile"
-    >
-      {{username}}
-    </span>
-  </div>
+<div [style]="{'display' : 'flex'}">
   <div *ngIf="logOutBtn" class="spinner-container">
     <div class="spinner"></div>
   </div>
   <div class="logout">
     <button
+      class="!k-text-white"
       kendoButton
       (click)="logOut()"
       [fillMode]="'outline'"

@@ -6,6 +6,7 @@ use App\Models\ArchivedTodo;
 use App\Models\Todo;
 use Carbon\Carbon;
 use Exception;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -23,12 +24,16 @@ class TodoController extends Controller
      */
     public function index(): JsonResponse
     {
-        $user = auth()->user(); // Get the currently authenticated user
+        try {
+            $user = auth()->user(); // Get the currently authenticated user
 
-        // User is authenticated, fetch the todos
-        $todos = $user->todos()->orderBy('created_at', 'asc')->get();
+            // User is authenticated, fetch the todos
+            $todos = $user->todos()->orderBy('created_at', 'asc')->get();
 
-        return response()->json($todos);
+            return response()->json($todos);
+        } catch (AuthenticationException $e) {
+            return response()->json(['message' => 'Unauthorized'], 401); // Unauthorized
+        }
     }
 
     /**

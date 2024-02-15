@@ -1,5 +1,5 @@
 <ul *ngFor="let todo of archivedTodos">
-  <li style="display: flex">{{todo.title}}
+  <li style="display: flex" class="!k-text-white">{{todo.title}}
     <app-restore-archived-todo-btn
       class="restore-btn"
       [todo]="todo.title"

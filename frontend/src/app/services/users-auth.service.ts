@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {CookieService} from "ngx-cookie-service";
-import {Observable, of} from "rxjs";
+import {catchError, EMPTY, Observable, of} from "rxjs";
 import {UserService} from "./user.service";
 
 @Injectable({
@@ -92,5 +92,15 @@ export class UsersAuthService {
         this.router.navigate(['/']);
       }
     })
+  }
+
+  tokenValidation(headers: HttpHeaders): Observable<boolean | any> {
+    return this.http.post('http://localhost:8080/api/token/check', {}, {headers})
+      .pipe(
+        catchError((err) => {
+          console.error('An error occurred while validating token', err);
+          return of(false);
+        })
+      )
   }
 }

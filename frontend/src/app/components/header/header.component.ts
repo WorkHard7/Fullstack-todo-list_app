@@ -1,4 +1,4 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,15 +7,4 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
 })
 export class HeaderComponent {
   mainTitle: string = 'ToDo-List App';
-
-  @ViewChild('btn') button!: ElementRef;
-
-  onHeaderClick(): void {
-    this.button.nativeElement.style.backgroundColor = this.generateRandomColor();
-  }
-
-  private generateRandomColor(): string {
-    const randomColor = Math.floor(Math.random() * 16777215).toString(16);
-    return '#' + randomColor;
-  }
 }

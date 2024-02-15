@@ -27,4 +27,17 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    public function render($request, Throwable $e)
+    {
+        if ($e instanceof InvalidTokenException) {
+            return response()->json(['message' => $e->getMessage()], 400);
+        }
+
+        if ($e instanceof UserNotFoundException) {
+            return response()->json(['message' => $e->getMessage()], 404);
+        }
+
+        return parent::render($request, $e);
+    }
 }

@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\InvalidTokenException;
+use App\Exceptions\UserNotFoundException;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,41 +19,53 @@ class AuthController extends Controller
 {
     public function signup(Request $request): JsonResponse
     {
-        $nameExists = User::query()->where('name', $request['name'])->exists();
-        $emailExists = User::query()->where('email', $request['email'])->exists();
+        try {
+            DB::beginTransaction();
 
-        if ($nameExists) {
-            return response()->json(['message' => 'name already exists'], 409);
+            $nameExists = User::query()->where('name', $request['name'])->exists();
+            $emailExists = User::query()->where('email', $request['email'])->exists();
+
+            if ($nameExists) {
+                return response()->json(['message' => 'name already exists'], 409);
+            }
+
+            if ($emailExists) {
+                return response()->json(['message' => 'email already exists'], 409);
+            }
+
+            $validatedData = $request->validate([
+                'name' => 'required|min:3|unique:users',
+                'email' => 'required|email|unique:users',
+                'password' => ['required', 'min: 6', 'regex:/[a-z]/', 'regex:/[A-Z]/', 'regex:/[0-9]/',
+                    'regex:/[@$!%*#?&]/', 'confirmed'],
+                'password_confirmation' => 'required|min:6|regex:/[a-z]/|regex:/[A-Z]/|regex:/[0-9]/|regex:/[@$!%*#?&]/'
+            ]);
+
+            $user = User::create([
+                'name' => $validatedData['name'],
+                'email' => $validatedData['email'],
+                'password' => Hash::make($validatedData['password'])
+            ]);
+
+            DB::commit();
+
+            $token = JWTAuth::fromUser($user); // generate token
+
+            return response()->json([
+                'status' => 'success',
+                'user' => $user,
+                'authorization' => [
+                    'token' => $token,
+                    'type' => 'bearer',
+                ]
+            ]);
+        } catch (Exception $e) {
+            DB::rollBack();
+
+            return response()->json([
+                'message' => 'An error occurred during registration. Please try again.'
+            ], 500);
         }
-
-        if ($emailExists) {
-            return response()->json(['message' => 'email already exists'], 409);
-        }
-
-        $validatedData = $request->validate([
-            'name' => 'required|min:3|unique:users',
-            'email' => 'required|email|unique:users',
-            'password' => ['required', 'min: 6', 'regex:/[a-z]/', 'regex:/[A-Z]/', 'regex:/[0-9]/',
-                'regex:/[@$!%*#?&]/', 'confirmed'],
-            'password_confirmation' => 'required|min:6|regex:/[a-z]/|regex:/[A-Z]/|regex:/[0-9]/|regex:/[@$!%*#?&]/'
-        ]);
-
-        $user = User::create([
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-            'password' => bcrypt($validatedData['password'])
-        ]);
-
-        $token = JWTAuth::fromUser($user); // generate token
-
-        return response()->json([
-            'status' => 'success',
-            'user' => $user,
-            'authorisation' => [
-                'token' => $token,
-                'type' => 'bearer',
-            ]
-        ]);
     }
 
     public function login(Request $request): JsonResponse
@@ -225,6 +240,34 @@ class AuthController extends Controller
             return $user;
         } catch (Exception $e) {
             throw new Exception('Unauthorized'); // Unauthorized
+        }
+    }
+
+    public function tokenValidation(): JsonResponse
+    {
+        try {
+            $token = JWTAuth::parseToken(); // Parse the token from the request
+
+            if (!$token->check()) {
+                throw new InvalidTokenException('Invalid token'); // Token is invalid
+            }
+
+            $user = $token->authenticate(); // Retrieve the authenticated user
+
+            if (!$user) {
+                throw new UserNotFoundException('User not found'); // User not found
+            }
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Token is valid.',
+            ]);
+        } catch (InvalidTokenException $e) {
+            return response()->json(['message' => $e->getMessage()], 401);
+        } catch (UserNotFoundException $e) {
+            return response()->json(['message' => $e->getMessage()], 404);
+        } catch (\Throwable $e) {
+            return response()->json(['message' => 'Something went wrong'], 500);
         }
     }
 }

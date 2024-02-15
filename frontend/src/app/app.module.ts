@@ -32,8 +32,9 @@ import {SignUpFormComponent} from './components/sign-up-form/sign-up-form.compon
 import {UserProfileComponent} from './components/user-profile/user-profile.component';
 import {UserProfileEditComponent} from './components/user-profile-edit/user-profile-edit.component';
 import {HomeComponent} from './components/home/home.component';
-import {NavbarComponent} from './components/navbar/navbar.component';
 import {WelcomePageComponent} from './components/welcome-page/welcome-page.component';
+import {TopBarComponent} from './components/top-bar/top-bar.component';
+import {ProfileBtnComponent} from './components/profile-btn/profile-btn.component';
 
 
 @NgModule({
@@ -57,8 +58,9 @@ import {WelcomePageComponent} from './components/welcome-page/welcome-page.compo
     UserProfileComponent,
     UserProfileEditComponent,
     HomeComponent,
-    NavbarComponent,
     WelcomePageComponent,
+    TopBarComponent,
+    ProfileBtnComponent,
   ],
   imports: [
     BrowserModule,

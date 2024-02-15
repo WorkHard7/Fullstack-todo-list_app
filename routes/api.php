@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/users/signup', [AuthController::class, 'signup'])->name('signup');
 Route::post('/users/login', [AuthController::class, 'login'])->name('login');
+Route::post('/token/check', [AuthController::class, 'tokenValidation'])->name('tokenValidation');
 
 Route::group(['middleware' => ['jwt.auth']], function () {
     Route::get('/users/profile', [AuthController::class, 'getUserProfile'])->name('getUserProfile');
@@ -34,7 +35,7 @@ Route::group(['middleware' => ['jwt.auth']], function () {
     Route::post('/users/logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::group(['prefix' => '/todos'], function () {
-        Route::get('/', [TodoController::class, 'index']);
+        Route::get('/', [TodoController::class, 'index'])->middleware('auth:api');
         Route::post('/create', [TodoController::class, 'create']);
         Route::put('/update/{todo}', [TodoController::class, 'update']);
 

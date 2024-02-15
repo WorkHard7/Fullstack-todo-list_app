@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
-import {Router} from "@angular/router";
 import {menuIcon} from "@progress/kendo-svg-icons";
+import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  selector: 'app-top-bar',
+  templateUrl: './top-bar.component.html',
+  styleUrls: ['./top-bar.component.scss']
 })
-export class NavbarComponent {
+export class TopBarComponent {
   listIcon = menuIcon;
 
   constructor(private router: Router) {

@@ -1,15 +1,15 @@
-<div class="form-container">
+<div class="login-container">
   <form [formGroup]="loginForm" (ngSubmit)="submitLoginForm()" class="login-form">
-    <h2 class="form-title">Log In</h2>
+    <h2 class="form-title !k-text-white">Log In</h2>
     <div class="form-group">
-      <label for="email" class="form-label">Email</label>
+      <label for="email" class="form-label !k-text-white">Email</label>
       <input type="email" id="email" formControlName="email" class="form-input" placeholder="Enter your email">
       <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="form-error">
         Please enter a valid email address.
       </div>
     </div>
     <div class="form-group">
-      <label for="password" class="form-label">Password</label>
+      <label for="password" class="form-label !k-text-white">Password</label>
       <input type="password" id="password" formControlName="password" class="form-input"
              placeholder="Enter your password">
       <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="form-error">
@@ -27,7 +27,7 @@
     </div>
 
     <div class="signup-message">
-      <p>Don't have an account? Register below.</p>
+      <p class="!k-text-white k-font-bold">Don't have an account? Register below.</p>
       <a routerLink="/signup" class="signup-link">Sign up</a>
     </div>
   </form>

@@ -7,7 +7,6 @@ import {LoginAuthGuard} from "./guards/login-auth.guard";
 import {SignUpFormComponent} from "./components/sign-up-form/sign-up-form.component";
 import {SignupAuthGuard} from "./guards/signup-auth.guard";
 import {UserProfileComponent} from "./components/user-profile/user-profile.component";
-import {UserProfileGuard} from "./guards/user-profile.guard";
 import {UserProfileEditComponent} from "./components/user-profile-edit/user-profile-edit.component";
 import {UserProfileResolver} from "./resolvers/user-profile.resolver";
 import {HomeComponent} from "./components/home/home.component";
@@ -33,13 +32,13 @@ const routes: Routes = [
     resolve: {
       user: UserProfileResolver
     },
-    canActivate: [UserProfileGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'profile/edit',
     component: UserProfileEditComponent,
     pathMatch: 'full',
-    canActivate: [UserProfileGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'signup',
