@@ -1,10 +1,12 @@
+@import 'src/styles/variables.scss';
+
 .profile {
-  max-width: 500px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #A09D98;
+  background-color: $primary-color;
 }
 
 .info {
@@ -20,12 +22,13 @@ h2 {
 .edit-button {
   display: block;
   margin: 0 auto;
-  padding: 10px 20px;
+  padding: 10px 15px;
   background-color: #827B7B;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: .4rem;
   cursor: pointer;
+  font-size: 1rem;
   transition: background-color 0.3s ease;
 }
 
@@ -34,12 +37,12 @@ h2 {
 }
 
 .profile-container {
-  max-width: 500px;
+  max-width: 700px;
   margin: 1rem auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #A09D98;
+  background-color: $primary-color;
 }
 
 .profile-title {
@@ -79,12 +82,13 @@ h2 {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 1rem;
   transition: background-color 0.3s ease;
 }
 
 .form-button:hover {
-  color: #5e5c5c;
-};
+  color: #7ab2ef;
+}
 
 .spinner {
   border: 4px solid #f3f3f3;
@@ -101,15 +105,15 @@ h2 {
   margin-top: 15px;
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
 .three-btns {
   display: flex;
 }
 
 .success {
-  color: green;
+  color: white;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

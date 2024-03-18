@@ -1,10 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+@import './styles/variables.scss';
 
 * {
   box-sizing: border-box;
 }
+
 body {
-  background: #827b7b;
+  background: $bg-color;
   margin: 0;
   padding: 0;
 }
@@ -14,11 +15,10 @@ body {
 }
 
 .main-container {
-  width: 500px;
-  margin: auto;
+  max-width: 700px;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #A09D98;
-  margin-bottom: 1rem;
+  background-color: $primary-color;
+  margin: auto auto 1rem;
 }

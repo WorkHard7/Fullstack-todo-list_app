@@ -195,7 +195,7 @@ export class UserProfileComponent implements OnInit {
   setTimeOutForSuccessMessage() {
     setTimeout(() => {
       this.successMessage = null;
-    }, 2000);
+    }, 3000);
   }
 
   setTimeOutForErrorMessage() {

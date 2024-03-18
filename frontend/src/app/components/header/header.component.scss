@@ -1,8 +1,10 @@
+@import 'src/styles/variables.scss';
+
 .header-container {
   display: grid;
   align-items: center;
   width: 200px;
   margin: 0 auto 10px;
   padding: 10px;
-  background: #A09D98;
+  background: $primary-color;
 }

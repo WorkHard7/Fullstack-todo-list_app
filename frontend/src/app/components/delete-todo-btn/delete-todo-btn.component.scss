@@ -16,6 +16,11 @@
   display: none;
 }
 
+button {
+  padding: 7px 13px;
+  font-size: 1rem;
+}
+
 @keyframes fadeOut {
   0% {
     opacity: 1;

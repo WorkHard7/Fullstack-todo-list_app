@@ -1,11 +1,13 @@
+@import './src/styles/variables.scss';
+
 .container {
   position: relative;
-  width: 500px;
+  max-width: 700px;
   margin: auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #A09D98;
+  background-color: $primary-color;
 }
 
 .btn {
@@ -22,7 +24,7 @@
 }
 
 .no-todos {
-  color: #6a16e8;
+  color: #ffffff;
   font-size: 13px;
   font-weight: bold;
   margin: 20px 0;
