@@ -6,5 +6,5 @@ import {Component} from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  mainTitle: string = 'ToDo-List App';
+  mainTitle: string = 'Your TaskMaster';
 }

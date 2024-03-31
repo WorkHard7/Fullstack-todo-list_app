@@ -1,3 +1,5 @@
+<app-top-bar/>
+
 <div class="profile">
   <div class="info !k-text-white">
     <h2>Name: {{ name }}</h2>
@@ -7,15 +9,15 @@
   <div class="three-btns">
     <button
       kendoButton
-      #btn
       themeColor="secondary"
       type="button"
       class="edit-button"
       (click)="changeName()">
       Change Name
-      <fa-icon *ngIf="!isNameFormOpen; else elseBlock"
-               animation="beat-fade"
-               [icon]="faAngleDown">
+      <fa-icon
+        *ngIf="!isNameFormOpen; else elseBlock"
+        animation="beat-fade"
+        [icon]="faAngleDown">
       </fa-icon>
       <ng-template #elseBlock>
         <fa-icon animation="beat-fade" [icon]="faAngleUp"></fa-icon>
@@ -24,15 +26,15 @@
 
     <button
       kendoButton
-      #btn
       themeColor="secondary"
       type="button"
       class="edit-button"
       (click)="changeEmail()">
       Change Email
-      <fa-icon *ngIf="!isEmailFormOpen; else elseBlock"
-               animation="beat-fade"
-               [icon]="faAngleDown">
+      <fa-icon
+        *ngIf="!isEmailFormOpen; else elseBlock"
+        animation="beat-fade"
+        [icon]="faAngleDown">
       </fa-icon>
       <ng-template #elseBlock>
         <fa-icon animation="beat-fade" [icon]="faAngleUp"></fa-icon>
@@ -41,15 +43,15 @@
 
     <button
       kendoButton
-      #btn
       themeColor="secondary"
       type="button"
       class="edit-button"
       (click)="changePassword()">
       Change Password
-      <fa-icon *ngIf="!isPasswordFormOpen; else elseBlock"
-               animation="beat-fade"
-               [icon]="faAngleDown">
+      <fa-icon
+        *ngIf="!isPasswordFormOpen; else elseBlock"
+        animation="beat-fade"
+        [icon]="faAngleDown">
       </fa-icon>
       <ng-template #elseBlock>
         <fa-icon animation="beat-fade" [icon]="faAngleUp"></fa-icon>
@@ -63,8 +65,13 @@
   <form [formGroup]="nameForm" (ngSubmit)="submitNameForm()" class="profile-form">
     <div class="form-group">
       <label for="name" class="form-label !k-text-white">Name</label>
-      <input type="text" id="name"
-             formControlName="name" class="form-input" placeholder="Enter your new name">
+      <input
+        type="text"
+        id="name"
+        formControlName="name"
+        class="form-input"
+        placeholder="Enter your new name"
+      >
       <div *ngIf="nameForm.get('name')?.invalid && nameForm.get('name')?.touched" class="form-error">
         Please enter a valid name (minimum 3 characters).
       </div>
@@ -86,8 +93,13 @@
   <form [formGroup]="emailForm" (ngSubmit)="submitEmailForm()" class="profile-form">
     <div class="form-group">
       <label for="email" class="form-label !k-text-white">Email</label>
-      <input type="email" id="email"
-             formControlName="email" class="form-input" placeholder="Enter your new email">
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        class="form-input"
+        placeholder="Enter your new email"
+      >
       <div *ngIf="emailForm.get('email')?.invalid && emailForm.get('email')?.touched" class="form-error">
         Please enter a valid email address.
       </div>
@@ -109,8 +121,13 @@
   <form [formGroup]="passwordForm" (ngSubmit)="submitPasswordForm()" class="profile-form">
     <div class="form-group">
       <label for="oldPassword" class="form-label !k-text-white">Old Password</label>
-      <input type="password" id="oldPassword"
-             formControlName="oldPassword" class="form-input" placeholder="Enter your old password">
+      <input
+        type="password"
+        id="oldPassword"
+        formControlName="oldPassword"
+        class="form-input"
+        placeholder="Enter your old password"
+      >
     </div>
     <div class="form-group">
       <label for="newPassword" class="form-label !k-text-white">New Password</label>
@@ -123,14 +140,26 @@
     </div>
     <div class="form-group">
       <label for="confirmPassword" class="form-label !k-text-white">Repeat Password</label>
-      <input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-input"
-             placeholder="Repeat your password">
-      <div *ngIf="passwordDoesNotMatch(passwordForm)"
-           class="form-error">
+      <input
+        type="password"
+        id="confirmPassword"
+        formControlName="confirmPassword"
+        class="form-input"
+        placeholder="Repeat your password"
+      >
+      <div
+        *ngIf="passwordDoesNotMatch(passwordForm)"
+        class="form-error">
         Passwords do not match.
       </div>
     </div>
-    <button type="submit" [disabled]="passwordForm.invalid" class="form-button">Update Password</button>
+    <button
+      type="submit"
+      [disabled]="passwordForm.invalid"
+      class="form-button"
+    >
+      Update Password
+    </button>
   </form>
 
   <p class="success" *ngIf="successMessage !== null">

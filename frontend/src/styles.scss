@@ -8,17 +8,24 @@ body {
   background: $bg-color;
   margin: 0;
   padding: 0;
+  font-family: "Gloria Hallelujah", cursive;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .warn-text {
   color: red;
 }
 
-.main-container {
-  max-width: 700px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: $primary-color;
-  margin: auto auto 1rem;
+.form-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #827B7B;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: "Gloria Hallelujah", cursive;
+  transition: background-color 0.3s ease;
 }

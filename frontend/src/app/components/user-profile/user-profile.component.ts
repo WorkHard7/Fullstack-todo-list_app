@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {UsersAuthService} from "../../services/users-auth.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {faAngleDown, faAngleUp} from "@fortawesome/free-solid-svg-icons";
@@ -45,8 +44,6 @@ export class UserProfileComponent implements OnInit {
   passwordForm!: FormGroup;
 
   constructor(
-    private authService: UsersAuthService,
-    private router: Router,
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private userService: UserService

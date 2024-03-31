@@ -12,7 +12,6 @@ import {HttpClientModule} from "@angular/common/http";
 import {FilterTodosPipe} from './pipes/filter-todos.pipe';
 
 import {AppComponent} from './app.component';
-import {AddTodoComponent} from './components/add-todo/add-todo.component';
 import {HeaderComponent} from './components/header/header.component';
 import {ListTodosComponent} from './components/list-todos/list-todos.component';
 import {DeleteTodoBtnComponent} from './components/delete-todo-btn/delete-todo-btn.component';
@@ -40,7 +39,6 @@ import {ProfileBtnComponent} from './components/profile-btn/profile-btn.componen
 @NgModule({
   declarations: [
     AppComponent,
-    AddTodoComponent,
     HeaderComponent,
     ListTodosComponent,
     DeleteTodoBtnComponent,

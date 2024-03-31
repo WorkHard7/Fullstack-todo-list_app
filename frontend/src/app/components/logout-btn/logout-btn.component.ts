@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {logoutIcon} from "@progress/kendo-svg-icons";
 import {UsersAuthService} from "../../services/users-auth.service";
 import Swal from "sweetalert2";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-logout-btn',
@@ -13,9 +12,7 @@ export class LogoutBtnComponent {
   logOutBtn: boolean = false;
   protected readonly logoutIcon = logoutIcon;
 
-  constructor(
-    private authUser: UsersAuthService,
-    private router: Router) {
+  constructor(private authUser: UsersAuthService) {
   }
 
   logOut() {

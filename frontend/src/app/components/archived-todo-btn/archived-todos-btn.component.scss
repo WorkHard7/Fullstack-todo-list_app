@@ -3,24 +3,10 @@
 .container {
   position: relative;
   max-width: 700px;
-  margin: auto;
+  margin: 2rem;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 25px;
   background-color: $primary-color;
-}
-
-.btn {
-  padding: 10px 20px;
-  background-color: #7123e8;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background-color: #5e1ad6;
 }
 
 .no-todos {

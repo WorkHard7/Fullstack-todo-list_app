@@ -16,7 +16,13 @@
         Password can not be empty
       </div>
     </div>
-    <button type="submit" [disabled]="loginForm.invalid" class="form-button">Log In</button>
+    <button
+      type="submit"
+      [disabled]="loginForm.invalid"
+      class="form-button"
+    >
+      Log In
+    </button>
 
     <div *ngIf="loading" class="spinner-container">
       <div class="spinner"></div>

@@ -1,22 +1,25 @@
 <div class="container">
   <button
     kendoButton
-    #btn
     themeColor="secondary"
     type="submit"
-    (click)="toggleArchivedTodo()">Archive
+    [rounded]="'full'"
+    (click)="toggleArchivedTodo()">
+    Archive
     <fa-icon *ngIf="!showArchivedTodos; else elseBlock"
              animation="beat-fade"
              [icon]="faAngleDown">
     </fa-icon>
+
     <ng-template #elseBlock>
       <fa-icon animation="beat-fade" [icon]="faAngleUp"></fa-icon>
     </ng-template>
+
   </button>
   <span *ngIf="archivedTodos?.length === 0" class="no-todos">
   No archived todos so far...
 </span>
   <div *ngIf="showArchivedTodos" [class.archive-todos-container]="true" [class.show]="showArchivedTodos">
-    <app-list-archived-todos />
+    <app-list-archived-todos/>
   </div>
 </div>

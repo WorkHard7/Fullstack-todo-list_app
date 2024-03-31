@@ -6,7 +6,7 @@
       class="list">
       <div class="todo-container">
         <input type="checkbox" [(ngModel)]="toDo.completed" (click)="changeTodoStatus(toDo, $event)">
-        <span class="todo-title !k-text-white">{{toDo.title}}</span>
+        <span class="todo-title">{{toDo.title}}</span>
         <button
           kendoButton
           style="padding: 1px"

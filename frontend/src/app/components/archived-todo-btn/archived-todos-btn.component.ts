@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {Todo} from "../../interfaces/todo";
 import {ToDoService} from "../../services/to-do.service";
 import {faAngleDown, faAngleUp} from "@fortawesome/free-solid-svg-icons";
-import {catchError, Observable, of} from "rxjs";
 
 @Component({
   selector: 'app-archived-todos-btn',

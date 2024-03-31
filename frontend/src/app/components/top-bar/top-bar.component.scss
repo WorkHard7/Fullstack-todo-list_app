@@ -1,8 +1,10 @@
 .top-bar {
   display: flex;
   padding: .3rem;
-  margin-bottom: .5rem;
-  background-color: #6B7280;
+  background-color: white;
+  width: 90%;
+  margin: 1rem auto 0;
+  border-radius: 25px;
 }
 
 nav {
@@ -19,11 +21,11 @@ li {
   list-style-type: none;
 }
 
-.profile-btn {
+.profile-btn, .home-btn {
   margin-left: .6rem;
 }
 
 span[kendoButton]:hover {
-  background-color: #5e5c5c;
-  color: #ffffff;
+  background-color: #292727;
+  color: #ffffff !important;
 }

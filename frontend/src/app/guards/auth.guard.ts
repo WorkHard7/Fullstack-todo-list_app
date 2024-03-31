@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {CookieService} from "ngx-cookie-service";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {catchError, EMPTY, map, Observable, of} from "rxjs";
+import {HttpHeaders} from "@angular/common/http";
+import {catchError, Observable, of} from "rxjs";
 import {UsersAuthService} from "../services/users-auth.service";
 
 @Injectable({
@@ -11,7 +11,6 @@ import {UsersAuthService} from "../services/users-auth.service";
 export class AuthGuard {
 
   constructor(
-    private http: HttpClient,
     private cookieService: CookieService,
     private router: Router,
     private authService: UsersAuthService

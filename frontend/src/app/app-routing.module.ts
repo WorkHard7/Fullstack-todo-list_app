@@ -15,16 +15,21 @@ import {WelcomePageGuard} from "./guards/welcome-page.guard";
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'welcome',
+    pathMatch: 'full'
+  },
+  {
+    path: 'welcome',
+    component: WelcomePageComponent,
+    pathMatch: 'full',
+    canActivate: [WelcomePageGuard]
+  },
+  {
     path: 'todos',
     pathMatch: 'full',
     component: HomeComponent,
     canActivate: [AuthGuard]
-  },
-  {
-    path: '',
-    component: WelcomePageComponent,
-    pathMatch: 'full',
-    canActivate: [WelcomePageGuard]
   },
   {
     path: 'profile',
@@ -32,7 +37,7 @@ const routes: Routes = [
     resolve: {
       user: UserProfileResolver
     },
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard]
   },
   {
     path: 'profile/edit',

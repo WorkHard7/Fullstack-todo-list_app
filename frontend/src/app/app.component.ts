@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -8,10 +7,4 @@ import {Router} from "@angular/router";
 })
 export class AppComponent {
 
-  constructor(public router: Router) {
-  }
-
-  isSignupLoginOrWelcomePage(): boolean {
-    return this.router.url === '/signup' || this.router.url === '/login' || this.router.url === '/';
-  }
 }

@@ -3,14 +3,16 @@
     <h2 class="form-title !k-text-white">Sign Up</h2>
     <div class="form-group">
       <label for="name" class="form-label !k-text-white">Name</label>
-      <input type="text" id="name" formControlName="name" class="form-input" placeholder="Enter your name">
+      <input type="text" id="name" formControlName="name" class="form-input"
+             placeholder="Enter your name">
       <div *ngIf="signupForm.get('name')?.invalid && signupForm.get('name')?.touched" class="form-error">
         Name must be at least 3 characters long.
       </div>
     </div>
     <div class="form-group">
       <label for="email" class="form-label !k-text-white">Email</label>
-      <input type="email" id="email" formControlName="email" class="form-input" placeholder="Enter your email">
+      <input type="email" id="email" formControlName="email" class="form-input"
+             placeholder="Enter your email" autocomplete="username">
       <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched" class="form-error">
         Please enter a valid email address.
       </div>
@@ -18,7 +20,7 @@
     <div class="form-group">
       <label for="password" class="form-label !k-text-white">Password</label>
       <input type="password" id="password" formControlName="password" class="form-input"
-             placeholder="Enter your password">
+             placeholder="Enter your password" autocomplete="current-password">
       <div *ngIf="passwordIsInvalid(signupForm)" class="form-error">
         Minimum of 6 characters required. Must contain at least one uppercase letter,
         one lowercase letter, one number and one special character.
@@ -27,13 +29,19 @@
     <div class="form-group">
       <label for="password_confirmation" class="form-label !k-text-white">Repeat Password</label>
       <input type="password" id="password_confirmation" formControlName="password_confirmation" class="form-input"
-             placeholder="Repeat your password">
+             placeholder="Repeat your password" autocomplete="new-password">
       <div *ngIf="passwordDoesNotMatch(signupForm)"
            class="form-error">
         Passwords do not match.
       </div>
     </div>
-    <button type="submit" [disabled]="signupForm.invalid" class="form-button">Sign Up</button>
+    <button
+      type="submit"
+      [disabled]="signupForm.invalid"
+      class="form-button"
+    >
+      Sign Up
+    </button>
 
     <div *ngIf="loading" class="spinner-container">
       <div class="spinner"></div>

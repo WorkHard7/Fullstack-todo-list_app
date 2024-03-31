@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {CookieService} from "ngx-cookie-service";
-import {catchError, EMPTY, Observable, of} from "rxjs";
+import {catchError, Observable, of} from "rxjs";
 import {UserService} from "./user.service";
 
 @Injectable({

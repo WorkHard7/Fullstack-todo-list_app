@@ -1,0 +1,9 @@
+@import "./src/styles/variables.scss";
+
+.main-container {
+  max-width: 700px;
+  padding: 20px;
+  border-radius: 25px;
+  background-color: $primary-color;
+  margin: 2rem;
+}

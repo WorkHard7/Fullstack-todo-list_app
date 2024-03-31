@@ -1,15 +1,16 @@
-<div [style]="{'display' : 'flex'}">
+<div class="main-container">
   <div *ngIf="logOutBtn" class="spinner-container">
     <div class="spinner"></div>
   </div>
   <div class="logout">
     <button
-      class="!k-text-white"
+      class="!k-text-black"
       kendoButton
       (click)="logOut()"
       [fillMode]="'outline'"
       [primary]="true"
       [svgIcon]="logoutIcon"
+      [rounded]="'full'"
     >Log out
     </button>
   </div>

@@ -1,10 +1,11 @@
-@import 'src/styles/variables.scss';
+@import './src/styles/variables.scss';
 
 .header-container {
-  display: grid;
-  align-items: center;
-  width: 200px;
-  margin: 0 auto 10px;
-  padding: 10px;
+  display: flex;
+  justify-content: center;
+  max-width: 25%;
+  text-align: center;
+  margin: 1.5rem auto;
+  border-radius: 25px;
   background: $primary-color;
 }

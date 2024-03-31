@@ -1,11 +1,10 @@
-@import 'src/styles/variables.scss';
+@import './src/styles/variables.scss';
 
 .profile {
   max-width: 700px;
-  margin: 0 auto;
+  margin: 3rem auto;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 25px;
   background-color: $primary-color;
 }
 
@@ -40,8 +39,7 @@ h2 {
   max-width: 700px;
   margin: 1rem auto;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 25px;
   background-color: $primary-color;
 }
 
@@ -56,6 +54,7 @@ h2 {
 }
 
 .form-label {
+  text-align: center;
   display: block;
   font-weight: bold;
   margin-bottom: 5px;
@@ -74,20 +73,8 @@ h2 {
   margin-top: 5px;
 }
 
-.form-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #827B7B;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-}
-
 .form-button:hover {
-  color: #7ab2ef;
+  background-color: #5e5c5c;;
 }
 
 .spinner {
