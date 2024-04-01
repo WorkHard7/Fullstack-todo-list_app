@@ -7,12 +7,12 @@ import {searchIcon} from "@progress/kendo-svg-icons";
   styleUrls: ['./search-todo-btn.component.scss']
 })
 export class SearchTodoBtnComponent {
-  @Output() searchClick: EventEmitter<string> = new EventEmitter<string>();
+  @Output() searchPerformed: EventEmitter<string> = new EventEmitter<string>();
 
   inputValue: string = '';
   protected readonly searchIcon = searchIcon;
 
-  onSearchClick(input: HTMLInputElement): void {
-    this.searchClick.emit(input.value);
+  onSearchPerform(input: HTMLInputElement): void {
+    this.searchPerformed.emit(input.value);
   }
 }

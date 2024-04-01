@@ -1,25 +1,23 @@
-import {Injectable, signal} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {BehaviorSubject, catchError, Observable, of, tap} from "rxjs";
 import {Todo} from "../interfaces/todo";
 import Swal from "sweetalert2";
 import {PromptUser} from "../interfaces/prompt-user";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {UsersAuthService} from "./users-auth.service";
-import {Router} from "@angular/router";
 import {CookieService} from "ngx-cookie-service";
+import {environment} from "../environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ToDoService {
-  public todoListSig = signal<Todo[]>([]);
   public toDoList$: BehaviorSubject<Todo[]> = new BehaviorSubject<Todo[]>([]);
   public archivedTodos$: BehaviorSubject<Todo[]> = new BehaviorSubject<Todo[]>([])
+  private todoApiUrl: string = environment.todoApiUrl;
+  private archivedTodoApiUrl: string = environment.archivedTodoApiUrl;
 
   constructor(
     private http: HttpClient,
-    private authUser: UsersAuthService,
-    private router: Router,
     private cookieService: CookieService
   ) {
   }
@@ -27,7 +25,7 @@ export class ToDoService {
   getTodos(): Observable<Todo[]> {
     const headers: HttpHeaders = this.prepareHeaders();
 
-    return this.http.get<Todo[]>('http://localhost:8080/api/todos', {headers})
+    return this.http.get<Todo[]>(this.todoApiUrl, {headers})
       .pipe(
         tap((todos) => {
           this.toDoList$.next(todos);
@@ -42,9 +40,11 @@ export class ToDoService {
   getArchivedTodos(): Observable<Todo[]> {
     const headers: HttpHeaders = this.prepareHeaders();
 
-    return this.http.get<Todo[]>('http://localhost:8080/api/todos/archived', {headers})
+    return this.http.get<Todo[]>(this.archivedTodoApiUrl, {headers})
       .pipe(
-        tap((archivedTodos) => this.archivedTodos$.next(archivedTodos)),
+        tap((archivedTodos) => {
+          this.archivedTodos$.next(archivedTodos)
+        }),
         catchError((err) => {
           console.error('An error occurred while fetching archived todos', err)
           return of([]);
@@ -283,7 +283,6 @@ export class ToDoService {
         const archivedTodos = this.archivedTodos$.getValue();
         const todos = this.toDoList$.getValue();
         const archivedIndex = archivedTodos.findIndex((item) => item.uuid === todo.uuid);
-        const todoIndex = todos.findIndex((item) => item.uuid === todo.uuid);
 
         if (this.todoAlreadyExists(todo)) {
           return this.displayToDoAlreadyExistsMessage(todo);

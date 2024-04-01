@@ -1,13 +1,16 @@
-import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
+import {inject, Injectable} from '@angular/core';
+import {CanActivateFn, Router} from '@angular/router';
 import {CookieService} from "ngx-cookie-service";
 
 @Injectable({
   providedIn: 'root'
 })
-export class WelcomePageGuard {
+class WelcomePageGuard {
 
-  constructor(private cookiesService: CookieService, private router: Router) {
+  constructor(
+    private cookiesService: CookieService,
+    private router: Router
+  ) {
   }
 
   canActivate(): boolean {
@@ -20,4 +23,8 @@ export class WelcomePageGuard {
       return true;
     }
   }
+}
+
+export const isWelcomePageGuard: CanActivateFn = () => {
+  return inject(WelcomePageGuard).canActivate();
 }

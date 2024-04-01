@@ -2,11 +2,11 @@
   <p *ngIf="toDoList.length <= 0" class="no-todos">Todos finished, well done...</p>
   <ul *ngFor="let toDo of toDoList | filterTodos: searchValue">
     <li
-      [ngClass]="{'completed' : toDo.completed}"
+      [ngClass]="{'completed': toDo.completed}"
       class="list">
       <div class="todo-container">
         <input type="checkbox" [(ngModel)]="toDo.completed" (click)="changeTodoStatus(toDo, $event)">
-        <span class="todo-title">{{toDo.title}}</span>
+        <span class="todo-title">{{ toDo.title }}</span>
         <button
           kendoButton
           style="padding: 1px"

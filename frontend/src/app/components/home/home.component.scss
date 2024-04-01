@@ -1,9 +1,19 @@
 @import "./src/styles/variables.scss";
 
 .main-container {
-  max-width: 700px;
+  margin: 3rem auto 0;
+}
+
+.todos-container {
   padding: 20px;
   border-radius: 25px;
   background-color: $primary-color;
   margin: 2rem;
 }
+
+@media screen and (min-width: 1000px) {
+  .main-container {
+    max-width: 800px;
+  }
+}
+

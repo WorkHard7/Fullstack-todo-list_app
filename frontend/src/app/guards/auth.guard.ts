@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
+import {inject, Injectable} from '@angular/core';
+import {CanActivateFn, Router} from '@angular/router';
 import {CookieService} from "ngx-cookie-service";
 import {HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, of} from "rxjs";
@@ -8,7 +8,7 @@ import {UsersAuthService} from "../services/users-auth.service";
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard {
+class AuthGuard {
 
   constructor(
     private cookieService: CookieService,
@@ -36,4 +36,8 @@ export class AuthGuard {
       return of(false);
     }
   }
+}
+
+export const isAuthGuard: CanActivateFn = () => {
+  return inject(AuthGuard).canActivate();
 }

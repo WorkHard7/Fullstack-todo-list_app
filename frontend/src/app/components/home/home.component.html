@@ -1,17 +1,17 @@
 <app-top-bar/>
 <app-header></app-header>
-<div style="display: flex; justify-content: center; margin-top: 3rem">
+<div class="main-container">
 
-  <div class="main-container">
-    <app-add-todo-btn></app-add-todo-btn>
-
+  <div class="todos-container">
+    <app-add-todo></app-add-todo>
     <app-search-todo-btn
-      (searchClick)="searchClick($event)"
+      (searchPerformed)="onSearchPerform($event)"
     ></app-search-todo-btn>
 
     <app-list-todos
       [searchValue]="searchValue"
     ></app-list-todos>
+
   </div>
 
   <app-archived-todos-btn></app-archived-todos-btn>

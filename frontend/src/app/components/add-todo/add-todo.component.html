@@ -1,5 +1,5 @@
 <div class="todo">
-  <div style="flex: 3">
+  <div style="flex: 1">
     <input
       (keyup.enter)="addToDo(input)"
       #input
@@ -7,11 +7,11 @@
       class="input"
       type="text"
       autofocus
-      placeholder="What needs to be done?"
+      placeholder="Enter your next task..."
       [(ngModel)]="inputValue"
     >
   </div>
-  <div style="flex: 1; text-align: end">
+  <div style="margin-left: 1rem">
     <button
       (click)="addToDo(input)"
       kendoButton

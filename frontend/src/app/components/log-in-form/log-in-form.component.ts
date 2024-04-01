@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {HttpClient} from "@angular/common/http";
 import {UsersAuthService} from "../../services/users-auth.service";
 
 @Component({
@@ -14,7 +13,6 @@ export class LogInFormComponent implements OnInit {
   loading: boolean = false;
 
   constructor(
-    private http: HttpClient,
     private formBuilder: FormBuilder,
     private authUser: UsersAuthService
   ) {

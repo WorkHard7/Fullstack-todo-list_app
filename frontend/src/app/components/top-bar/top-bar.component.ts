@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {menuIcon} from "@progress/kendo-svg-icons";
+import {homeIcon} from "@progress/kendo-svg-icons";
 import {Router} from "@angular/router";
 
 @Component({
@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./top-bar.component.scss']
 })
 export class TopBarComponent {
-  listIcon = menuIcon;
+  homeIcon = homeIcon;
 
   constructor(private router: Router) {
   }

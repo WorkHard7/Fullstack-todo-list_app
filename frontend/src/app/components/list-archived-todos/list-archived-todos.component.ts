@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ToDoService} from "../../services/to-do.service";
 import {Todo} from "../../interfaces/todo";
-import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-list-archived-todos',
@@ -12,8 +11,7 @@ export class ListArchivedTodosComponent implements OnInit {
   archivedTodos: Todo[] = [];
 
   constructor(
-    private toDoService: ToDoService,
-    private activatedRoute: ActivatedRoute
+    private toDoService: ToDoService
   ) {
   }
 

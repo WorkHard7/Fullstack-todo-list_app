@@ -1,3 +1,5 @@
+@import './src/styles/variables.scss';
+
 p {
   font-size: 18px;
   margin-bottom: 30px;
@@ -26,7 +28,7 @@ h3 {
 .welcome-page {
   position: relative;
   height: 100vh;
-  background-color: #827B7B;
+  background-color: $bg-color;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 

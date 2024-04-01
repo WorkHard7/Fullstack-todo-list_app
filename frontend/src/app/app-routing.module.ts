@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LogInFormComponent} from "./components/log-in-form/log-in-form.component";
 import {RouteNotFoundComponent} from "./components/route-not-found/route-not-found.component";
-import {AuthGuard} from "./guards/auth.guard";
+import {isAuthGuard} from "./guards/auth.guard";
 import {LoginAuthGuard} from "./guards/login-auth.guard";
 import {SignUpFormComponent} from "./components/sign-up-form/sign-up-form.component";
 import {SignupAuthGuard} from "./guards/signup-auth.guard";
@@ -11,7 +11,7 @@ import {UserProfileEditComponent} from "./components/user-profile-edit/user-prof
 import {UserProfileResolver} from "./resolvers/user-profile.resolver";
 import {HomeComponent} from "./components/home/home.component";
 import {WelcomePageComponent} from "./components/welcome-page/welcome-page.component";
-import {WelcomePageGuard} from "./guards/welcome-page.guard";
+import {isWelcomePageGuard} from "./guards/welcome-page.guard";
 
 const routes: Routes = [
   {
@@ -23,13 +23,13 @@ const routes: Routes = [
     path: 'welcome',
     component: WelcomePageComponent,
     pathMatch: 'full',
-    canActivate: [WelcomePageGuard]
+    canActivate: [isWelcomePageGuard]
   },
   {
     path: 'todos',
     pathMatch: 'full',
     component: HomeComponent,
-    canActivate: [AuthGuard]
+    canActivate: [isAuthGuard]
   },
   {
     path: 'profile',
@@ -37,13 +37,13 @@ const routes: Routes = [
     resolve: {
       user: UserProfileResolver
     },
-    canActivate: [AuthGuard]
+    canActivate: [isAuthGuard]
   },
   {
     path: 'profile/edit',
     component: UserProfileEditComponent,
     pathMatch: 'full',
-    canActivate: [AuthGuard]
+    canActivate: [isAuthGuard]
   },
   {
     path: 'signup',

@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ToDoService} from "../../services/to-do.service";
 import {editToolsIcon} from "@progress/kendo-svg-icons";
 import {Todo} from "../../interfaces/todo";
-import {Router} from "@angular/router";
 import {UsersAuthService} from "../../services/users-auth.service";
 
 @Component({
@@ -11,13 +10,16 @@ import {UsersAuthService} from "../../services/users-auth.service";
   styleUrls: ['./list-todos.component.scss']
 })
 export class ListTodosComponent implements OnInit {
-  @Input() searchValue!: string;
+  @Input() searchValue: string = '';
 
   loading: boolean = true;
   toDoList: Todo[] = [];
   protected readonly editIcon = editToolsIcon;
 
-  constructor(private toDoService: ToDoService, private authService: UsersAuthService) {
+  constructor(
+    private toDoService: ToDoService,
+    private authService: UsersAuthService
+  ) {
   }
 
   ngOnInit(): void {

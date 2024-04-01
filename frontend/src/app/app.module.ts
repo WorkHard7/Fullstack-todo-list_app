@@ -21,12 +21,11 @@ import {
   RestoreArchivedTodoBtnComponent
 } from './components/restore-archived-todo-btn/restore-archived-todo-btn.component';
 import {DeleteArchivedTodoBtnComponent} from './components/delete-archived-todo-btn/delete-archived-todo-btn.component';
-import {AddTodoBtnComponent} from "./components/add-todo-btn/add-todo-btn.component";
+import {AddTodoComponent} from "./components/add-todo/add-todo.component";
 import {SearchTodoBtnComponent} from './components/search-todo-btn/search-todo-btn.component';
 import {LogInFormComponent} from './components/log-in-form/log-in-form.component';
 import {RouteNotFoundComponent} from './components/route-not-found/route-not-found.component';
 import {LogoutBtnComponent} from './components/logout-btn/logout-btn.component';
-import {AuthGuard} from "./guards/auth.guard";
 import {SignUpFormComponent} from './components/sign-up-form/sign-up-form.component';
 import {UserProfileComponent} from './components/user-profile/user-profile.component';
 import {UserProfileEditComponent} from './components/user-profile-edit/user-profile-edit.component';
@@ -46,7 +45,7 @@ import {ProfileBtnComponent} from './components/profile-btn/profile-btn.componen
     ListArchivedTodosComponent,
     RestoreArchivedTodoBtnComponent,
     DeleteArchivedTodoBtnComponent,
-    AddTodoBtnComponent,
+    AddTodoComponent,
     SearchTodoBtnComponent,
     FilterTodosPipe,
     LogInFormComponent,
@@ -75,7 +74,7 @@ import {ProfileBtnComponent} from './components/profile-btn/profile-btn.componen
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [AuthGuard],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

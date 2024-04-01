@@ -1,5 +1,11 @@
 @import './styles/variables.scss';
 
+::placeholder {
+  font-family: "Gloria Hallelujah", cursive;
+  display: flex;
+  align-items: center;
+}
+
 * {
   box-sizing: border-box;
 }

@@ -8,8 +8,7 @@ import {Component} from '@angular/core';
 export class HomeComponent {
   searchValue: string = '';
 
-
-  searchClick(inputValue: string): void {
+  onSearchPerform(inputValue: string): void {
     this.searchValue = inputValue;
   }
 }
