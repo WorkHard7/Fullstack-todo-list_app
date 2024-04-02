@@ -13,8 +13,6 @@ import {environment} from "../environment";
 export class ToDoService {
   public toDoList$: BehaviorSubject<Todo[]> = new BehaviorSubject<Todo[]>([]);
   public archivedTodos$: BehaviorSubject<Todo[]> = new BehaviorSubject<Todo[]>([])
-  private todoApiUrl: string = environment.todoApiUrl;
-  private archivedTodoApiUrl: string = environment.archivedTodoApiUrl;
 
   constructor(
     private http: HttpClient,
@@ -25,7 +23,7 @@ export class ToDoService {
   getTodos(): Observable<Todo[]> {
     const headers: HttpHeaders = this.prepareHeaders();
 
-    return this.http.get<Todo[]>(this.todoApiUrl, {headers})
+    return this.http.get<Todo[]>(environment.todosApiUrl, {headers})
       .pipe(
         tap((todos) => {
           this.toDoList$.next(todos);
@@ -40,7 +38,7 @@ export class ToDoService {
   getArchivedTodos(): Observable<Todo[]> {
     const headers: HttpHeaders = this.prepareHeaders();
 
-    return this.http.get<Todo[]>(this.archivedTodoApiUrl, {headers})
+    return this.http.get<Todo[]>(environment.archivedTodosApiUrl, {headers})
       .pipe(
         tap((archivedTodos) => {
           this.archivedTodos$.next(archivedTodos)
@@ -57,10 +55,7 @@ export class ToDoService {
 
     // Get the value of the 'Authorization' header
     const authorizationHeader = headers.get('Authorization');
-
     console.log('Token all good? ', authorizationHeader);
-
-    const newTodo: Todo = {title: todoTitle, completed: false, created_at: new Date(), updated_at: new Date()};
 
     if (this.todoExists(todoTitle)) {
       Swal.fire({
@@ -75,7 +70,7 @@ export class ToDoService {
       "title": todoTitle
     }
 
-    this.http.post<any>('http://localhost:8080/api/todos/create', body, {headers}).subscribe({
+    this.http.post<any>(environment.createTodoApiUrl, body, {headers}).subscribe({
       next: (response) => {
         const todos = this.toDoList$.getValue();
         const createdTodo = response.todo;
@@ -134,7 +129,7 @@ export class ToDoService {
     }
 
     if (todoToUpdateIndex !== -1) {
-      this.http.put(`http://localhost:8080/api/todos/update/status/${todo.uuid}`, body, {headers}).subscribe({
+      this.http.put(`${environment.updateTodoStatusApiUrl}/${todo.uuid}`, body, {headers}).subscribe({
         next: (response: any) => {
           todos[todoToUpdateIndex].completed = response.todo.completed;
           this.toDoList$.next([...todos]);
@@ -171,7 +166,7 @@ export class ToDoService {
             const index = archivedTodos.findIndex((item) => item.uuid === todo.uuid);
 
             if (index !== -1) {
-              this.http.delete(`http://localhost:8080/api/todos/archived/delete/${todo.uuid}`, {headers}).subscribe({
+              this.http.delete(`${environment.deleteArchivedTodoApiUrl}/${todo.uuid}`, {headers}).subscribe({
                 next: () => {
                   archivedTodos.splice(index, 1);
                   this.archivedTodos$.next([...archivedTodos]);
@@ -192,7 +187,7 @@ export class ToDoService {
             const todoIndex = todos.findIndex((item) => item.uuid === todo.todo.uuid);
 
             if (todoIndex !== -1) {
-              this.http.delete(`http://localhost:8080/api/todos/delete/${todo.uuid}`, {headers}).subscribe({
+              this.http.delete(`${environment.deleteTodoApiUrl}/${todo.uuid}`, {headers}).subscribe({
                 next: (response: any) => {
 
                   const archivedTodos = this.archivedTodos$.getValue();
@@ -251,7 +246,7 @@ export class ToDoService {
         const index = todos.findIndex((item) => item.uuid === todo.uuid);
 
         if (index !== -1) {
-          this.http.put(`http://localhost:8080/api/todos/update/${todo.uuid}`, body, {headers}).subscribe({
+          this.http.put(`${environment.editTodoStatusApiUrl}/${todo.uuid}`, body, {headers}).subscribe({
             next: ((response) => {
               todos[index].title = result.value;
               this.toDoList$.next([...todos]);
@@ -289,7 +284,7 @@ export class ToDoService {
         }
 
         if (archivedIndex !== -1) {
-          this.http.post(`http://localhost:8080/api/todos/archived/restore/${todo.uuid}`, {}, {headers}).subscribe({
+          this.http.post(`${environment.restoreArchivedTodoApiUrl}/${todo.uuid}`, {}, {headers}).subscribe({
             next: (response: any) => {
               const restoredTodo = response.todo;
 

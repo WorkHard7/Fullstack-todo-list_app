@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {logoutIcon} from "@progress/kendo-svg-icons";
-import {UsersAuthService} from "../../services/users-auth.service";
+import {UsersAuthService} from "../../../services/users-auth.service";
 import Swal from "sweetalert2";
 
 @Component({

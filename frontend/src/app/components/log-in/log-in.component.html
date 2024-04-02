@@ -1,18 +1,34 @@
-<div class="login-container">
+<div id="particles-js" class="login-container">
   <form [formGroup]="loginForm" (ngSubmit)="submitLoginForm()" class="login-form">
     <h2 class="form-title !k-text-white">Log In</h2>
     <div class="form-group">
       <label for="email" class="form-label !k-text-white">Email</label>
-      <input type="email" id="email" formControlName="email" class="form-input" placeholder="Enter your email">
+      <input
+        autocomplete="on"
+        class="form-input"
+        formControlName="email"
+        id="email"
+        placeholder="Enter your email"
+        type="email"
+      >
       <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="form-error">
         Please enter a valid email address.
       </div>
     </div>
     <div class="form-group">
       <label for="password" class="form-label !k-text-white">Password</label>
-      <input type="password" id="password" formControlName="password" class="form-input"
-             placeholder="Enter your password">
-      <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="form-error">
+      <input
+        autocomplete="on"
+        class="form-input"
+        formControlName="password"
+        id="password"
+        placeholder="Enter your password"
+        type="password"
+      >
+      <div
+        *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+        class="form-error"
+      >
         Password can not be empty
       </div>
     </div>
@@ -28,7 +44,10 @@
       <div class="spinner"></div>
     </div>
 
-    <div style="color: red" *ngIf="errorMessage && (!loginForm.get('email')?.touched)">
+    <div
+      *ngIf="errorMessage && (!loginForm.get('email')?.touched)"
+      style="color: red"
+    >
       <p>{{ errorMessage }}</p>
     </div>
 

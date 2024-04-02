@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {userIcon} from "@progress/kendo-svg-icons";
-import {UserService} from "../../services/user.service";
+import {UserService} from "../../../services/user.service";
 import {Router} from "@angular/router";
-import {Utils} from "../../utils/utils";
+import {Utils} from "../../../utils/utils";
 
 @Component({
   selector: 'app-username-btn',

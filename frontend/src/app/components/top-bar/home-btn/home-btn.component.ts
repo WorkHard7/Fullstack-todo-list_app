@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {homeIcon} from "@progress/kendo-svg-icons";
 import {Router} from "@angular/router";
-import {Utils} from "../../utils/utils";
+import {Utils} from "../../../utils/utils";
 
 @Component({
   selector: 'app-home-btn',

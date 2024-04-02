@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {trashIcon} from "@progress/kendo-svg-icons";
-import {Todo} from "../../interfaces/todo";
+import {Todo} from "../../../interfaces/todo";
 
 @Component({
   selector: 'app-delete-todo-btn',
