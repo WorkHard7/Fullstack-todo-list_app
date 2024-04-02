@@ -1,23 +1,17 @@
-import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
+import {inject} from '@angular/core';
+import {CanActivateFn, Router} from '@angular/router';
 import {CookieService} from "ngx-cookie-service";
 
-@Injectable({
-  providedIn: 'root'
-})
-export class SignupAuthGuard {
+export const SignupAuthGuard: CanActivateFn = () => {
+  const router = inject(Router);
+  const cookiesService = inject(CookieService);
 
-  constructor(private cookiesService: CookieService, private router: Router) {
-  }
+  const token = cookiesService.get('token');
 
-  canActivate(): boolean {
-    const token = this.cookiesService.get('token');
-
-    if (token) {
-      this.router.navigate(['todos']);
-      return false;
-    } else {
-      return true;
-    }
+  if (token) {
+    router.navigate(['todos']);
+    return false;
+  } else {
+    return true;
   }
 }

@@ -1,14 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
 import {UsersAuthService} from "../../services/users-auth.service";
 
 @Component({
-  selector: 'app-sign-up-form',
-  templateUrl: './sign-up-form.component.html',
-  styleUrls: ['./sign-up-form.component.scss']
+  selector: 'app-sign-up',
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.scss']
 })
-export class SignUpFormComponent implements OnInit {
+export class SignUpComponent implements OnInit {
   signupForm!: FormGroup;
   loading = false;
   errorMessage: string = '';
@@ -19,8 +18,7 @@ export class SignUpFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: UsersAuthService,
-    private router: Router
+    private authService: UsersAuthService
   ) {
     this.getErrorMessageFromLocalStorage();
   }

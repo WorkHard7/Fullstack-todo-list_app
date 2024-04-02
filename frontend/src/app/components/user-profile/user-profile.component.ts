@@ -5,6 +5,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {faAngleDown, faAngleUp} from "@fortawesome/free-solid-svg-icons";
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 import {UserService} from "../../services/user.service";
+import {Utils} from "../../utils/utils";
 
 @Component({
   selector: 'app-user-profile',
@@ -26,7 +27,7 @@ import {UserService} from "../../services/user.service";
     ]),
   ],
 })
-export class UserProfileComponent implements OnInit {
+export class UserProfileComponent extends Utils implements OnInit {
   faAngleDown: IconDefinition = faAngleDown;
   faAngleUp: IconDefinition = faAngleUp;
 
@@ -48,6 +49,8 @@ export class UserProfileComponent implements OnInit {
     private formBuilder: FormBuilder,
     private userService: UserService
   ) {
+    super();
+
     this.createNameForm();
     this.createEmailForm();
     this.createPasswordForm();
@@ -56,8 +59,13 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe({
       next: (response: any) => {
+
         this.name = response.user.name;
         this.email = response.user.email;
+        this.resetOpacity();
+      },
+      error: (error) => {
+        console.error('Error fetching user data:', error);
       }
     });
   }

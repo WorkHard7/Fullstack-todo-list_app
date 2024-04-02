@@ -3,11 +3,11 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UsersAuthService} from "../../services/users-auth.service";
 
 @Component({
-  selector: 'app-log-in-form',
-  templateUrl: './log-in-form.component.html',
-  styleUrls: ['./log-in-form.component.scss']
+  selector: 'app-log-in',
+  templateUrl: './log-in.component.html',
+  styleUrls: ['./log-in.component.scss']
 })
-export class LogInFormComponent implements OnInit {
+export class LogInComponent implements OnInit {
   loginForm!: FormGroup;
   errorMessage: string | null = null;
   loading: boolean = false;

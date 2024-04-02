@@ -3,13 +3,14 @@ import {ToDoService} from "../../services/to-do.service";
 import {editToolsIcon} from "@progress/kendo-svg-icons";
 import {Todo} from "../../interfaces/todo";
 import {UsersAuthService} from "../../services/users-auth.service";
+import {Utils} from "../../utils/utils";
 
 @Component({
   selector: 'app-list-todos',
   templateUrl: './list-todos.component.html',
   styleUrls: ['./list-todos.component.scss']
 })
-export class ListTodosComponent implements OnInit {
+export class ListTodosComponent extends Utils implements OnInit {
   @Input() searchValue: string = '';
 
   loading: boolean = true;
@@ -20,9 +21,11 @@ export class ListTodosComponent implements OnInit {
     private toDoService: ToDoService,
     private authService: UsersAuthService
   ) {
+    super();
   }
 
   ngOnInit(): void {
+    this.resetOpacity();
     this.loading = true;
 
     this.toDoService.getTodos().subscribe({
@@ -30,7 +33,9 @@ export class ListTodosComponent implements OnInit {
         console.error('An error occurred while fetching todo list', err);
         this.authService.logout();
       },
-      complete: () => this.loading = false
+      complete: () => {
+        this.loading = false
+      }
     })
 
     this.toDoService.toDoList$.subscribe({

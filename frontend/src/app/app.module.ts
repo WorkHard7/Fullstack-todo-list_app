@@ -23,16 +23,17 @@ import {
 import {DeleteArchivedTodoBtnComponent} from './components/delete-archived-todo-btn/delete-archived-todo-btn.component';
 import {AddTodoComponent} from "./components/add-todo/add-todo.component";
 import {SearchTodoBtnComponent} from './components/search-todo-btn/search-todo-btn.component';
-import {LogInFormComponent} from './components/log-in-form/log-in-form.component';
+import {LogInComponent} from './components/log-in/log-in.component';
 import {RouteNotFoundComponent} from './components/route-not-found/route-not-found.component';
 import {LogoutBtnComponent} from './components/logout-btn/logout-btn.component';
-import {SignUpFormComponent} from './components/sign-up-form/sign-up-form.component';
+import {SignUpComponent} from './components/sign-up/sign-up.component';
 import {UserProfileComponent} from './components/user-profile/user-profile.component';
 import {UserProfileEditComponent} from './components/user-profile-edit/user-profile-edit.component';
 import {HomeComponent} from './components/home/home.component';
 import {WelcomePageComponent} from './components/welcome-page/welcome-page.component';
 import {TopBarComponent} from './components/top-bar/top-bar.component';
-import {ProfileBtnComponent} from './components/profile-btn/profile-btn.component';
+import {UsernameBtnComponent} from './components/username-btn/username-btn.component';
+import {HomeBtnComponent} from './components/home-btn/home-btn.component';
 
 
 @NgModule({
@@ -48,16 +49,17 @@ import {ProfileBtnComponent} from './components/profile-btn/profile-btn.componen
     AddTodoComponent,
     SearchTodoBtnComponent,
     FilterTodosPipe,
-    LogInFormComponent,
+    LogInComponent,
     RouteNotFoundComponent,
     LogoutBtnComponent,
-    SignUpFormComponent,
+    SignUpComponent,
     UserProfileComponent,
     UserProfileEditComponent,
     HomeComponent,
     WelcomePageComponent,
     TopBarComponent,
-    ProfileBtnComponent,
+    UsernameBtnComponent,
+    HomeBtnComponent,
   ],
   imports: [
     BrowserModule,

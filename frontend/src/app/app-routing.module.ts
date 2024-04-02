@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {LogInFormComponent} from "./components/log-in-form/log-in-form.component";
+import {LogInComponent} from "./components/log-in/log-in.component";
 import {RouteNotFoundComponent} from "./components/route-not-found/route-not-found.component";
 import {isAuthGuard} from "./guards/auth.guard";
 import {LoginAuthGuard} from "./guards/login-auth.guard";
-import {SignUpFormComponent} from "./components/sign-up-form/sign-up-form.component";
+import {SignUpComponent} from "./components/sign-up/sign-up.component";
 import {SignupAuthGuard} from "./guards/signup-auth.guard";
 import {UserProfileComponent} from "./components/user-profile/user-profile.component";
 import {UserProfileEditComponent} from "./components/user-profile-edit/user-profile-edit.component";
@@ -48,13 +48,13 @@ const routes: Routes = [
   {
     path: 'signup',
     pathMatch: 'full',
-    component: SignUpFormComponent,
+    component: SignUpComponent,
     canActivate: [SignupAuthGuard]
   },
   {
     path: 'login',
     pathMatch: 'full',
-    component: LogInFormComponent,
+    component: LogInComponent,
     canActivate: [LoginAuthGuard]
   },
   {

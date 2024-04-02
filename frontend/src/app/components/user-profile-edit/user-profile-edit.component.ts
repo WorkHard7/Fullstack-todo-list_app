@@ -8,7 +8,6 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class UserProfileEditComponent {
   profileForm!: FormGroup;
-  loading = false;
   errorMessage = '';
 
   constructor(private formBuilder: FormBuilder) {

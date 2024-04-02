@@ -1,17 +1,21 @@
-<div *ngIf="!loading">
+<div style="margin-top: 1rem" *ngIf="!loading">
   <p *ngIf="toDoList.length <= 0" class="no-todos">Todos finished, well done...</p>
   <ul *ngFor="let toDo of toDoList | filterTodos: searchValue">
     <li
       [ngClass]="{'completed': toDo.completed}"
       class="list">
       <div class="todo-container">
-        <input type="checkbox" [(ngModel)]="toDo.completed" (click)="changeTodoStatus(toDo, $event)">
+        <input
+          type="checkbox"
+          [(ngModel)]="toDo.completed"
+          (click)="changeTodoStatus(toDo, $event)"
+        >
         <span class="todo-title">{{ toDo.title }}</span>
         <button
-          kendoButton
-          style="padding: 1px"
           (click)="editTodo(toDo)"
           [svgIcon]="editIcon"
+          kendoButton
+          style="padding: 1px"
         ></button>
       </div>
     </li>

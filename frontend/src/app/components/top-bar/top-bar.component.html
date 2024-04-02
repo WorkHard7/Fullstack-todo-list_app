@@ -2,20 +2,10 @@
   <nav>
     <ul>
       <li>
-        <span
-          kendoButton
-          class="!k-text-black home-btn"
-          *ngIf="!isSignupOrLoginPageOrTodos()"
-          routerLink="/todos"
-          [fillMode]="'outline'"
-          [svgIcon]="homeIcon"
-          [rounded]="'full'"
-        >
-          Home
-        </span>
+        <app-home-btn></app-home-btn>
       </li>
       <li class="profile-btn">
-        <app-profile-btn></app-profile-btn>
+        <app-username-btn></app-username-btn>
       </li>
     </ul>
   </nav>

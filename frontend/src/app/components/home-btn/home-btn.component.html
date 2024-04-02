@@ -1,0 +1,15 @@
+<span
+  (click)="navigateToHomePage()"
+  *ngIf="!isSignupOrLoginPageOrTodos()"
+  [fillMode]="'outline'"
+  [rounded]="'full'"
+  [svgIcon]="homeIcon"
+  class="!k-text-black home-btn"
+  kendoButton
+>
+  Home
+</span>
+
+<div *ngIf="loading" class="spinner-container">
+  <div class="spinner"></div>
+</div>

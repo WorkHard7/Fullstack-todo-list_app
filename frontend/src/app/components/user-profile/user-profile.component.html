@@ -71,6 +71,7 @@
         formControlName="name"
         class="form-input"
         placeholder="Enter your new name"
+        autocomplete="on"
       >
       <div *ngIf="nameForm.get('name')?.invalid && nameForm.get('name')?.touched" class="form-error">
         Please enter a valid name (minimum 3 characters).
@@ -99,6 +100,7 @@
         formControlName="email"
         class="form-input"
         placeholder="Enter your new email"
+        autocomplete="on"
       >
       <div *ngIf="emailForm.get('email')?.invalid && emailForm.get('email')?.touched" class="form-error">
         Please enter a valid email address.
@@ -127,12 +129,19 @@
         formControlName="oldPassword"
         class="form-input"
         placeholder="Enter your old password"
+        autocomplete="on"
       >
     </div>
     <div class="form-group">
       <label for="newPassword" class="form-label !k-text-white">New Password</label>
-      <input type="password" id="newPassword" formControlName="newPassword" class="form-input"
-             placeholder="Enter your new password">
+      <input
+        type="password"
+        id="newPassword"
+        formControlName="newPassword"
+        class="form-input"
+        placeholder="Enter your new password"
+        autocomplete="on"
+      >
       <div *ngIf="passwordIsInvalid(passwordForm)" class="form-error">
         Minimum of 6 characters required. Must contain at least one uppercase letter,
         one lowercase letter, one number, and one special character.
@@ -146,6 +155,7 @@
         formControlName="confirmPassword"
         class="form-input"
         placeholder="Repeat your password"
+        autocomplete="on"
       >
       <div
         *ngIf="passwordDoesNotMatch(passwordForm)"
